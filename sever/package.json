@@ -1,22 +1,23 @@
 {
-    "name": "JATE",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "scripts": {
-        "server": "nodemon server.js --ignore client"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "express": "^4.18.1",
-        "html-webpack-plugin": "^5.5.0",
-        "inject-web-manifest-plugin": "^1.0.6",
-        "use-indexeddb": "^1.0.9",
-        "webpack-pwa-manifest": "^4.0.0"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.4"
-    }
+  "name": "jate",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js --ignore client",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "html-webpack-plugin": "^5.5.0",
+    "inject-web-manifest-plugin": "^1.0.6",
+    "use-indexeddb": "^1.0.9",
+    "webpack-pwa-manifest": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "description": ""
 }
