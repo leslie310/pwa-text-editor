@@ -20,53 +20,56 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
 				template: './index.html',
-			}),
-			new WebpackPwaManifest({
-				name: 'JATE',
-				short_name: 'JATE',
-				description: 'Just Another Text Editor',
-				display: 'standalone',
-				background_color: '#1e1e1e',
-				theme_color: '#1e1e1e',
-				start_url: '/',
-				publicPath: '/',
-				fingerprints: false,
-				inject: true,
-				icons: [
-					{
-						src: path.resolve('src/images/logo.png'),
-						sizes: [96, 128, 192, 256, 384, 512],
-						destination: path.join('assets', 'icons'),
-					},
-				],
+				title: 'Webpack Plugin',
 			}),
 			new InjectManifest({
 				swSrc: './src-sw.js',
-				swDest: 'service-worker.js',
-			}),
-    ],
-
-    module: {
-      rules: [
-        {
-					test: /\.css$/i,
-					use: ['style-loader', 'css-loader'],
-				},
-				{
-					test: /\.m?js$/,
-					exclude: /node_modules/,
-					use: {
-						loader: 'babel-loader',
-						options: {
-							presets: ['@babel/preset-env'],
-							plugins: [
-								'@babel/plugin-proposal-object-rest-spread',
-								'@babel/transform-runtime',
-							],
-						},
+				swDest: 'src-sw.js',
+			  }),
+		
+			// Creates a manifest.json file.
+			  new WebpackPwaManifest({
+				fingerprints: false,
+				inject: true,
+				name: 'JUST ANOTHER TEXT EDITOR',
+				short_name: 'J.A.T.E',
+				description: 'Just another text editor app',
+				background_color: '#225ca3',
+				theme_color: '#225ca3',
+				start_url: './',
+				publicPath: './',
+				icons: [
+				  {
+					src: path.resolve('src/images/logo.png'),
+					sizes: [96, 128, 192, 256, 384, 512],
+					destination: path.join('assets', 'icons'),
+				  },
+				],
+			  }),
+			  
+			],
+		
+			module: {
+			  rules: [
+			   {
+				test: /\.css$/i,
+				use: ['style-loader', 'css-loader'],
+			  }, 
+		
+			  {
+				  test: /\.m?js$/,
+				  exclude: /node_modules/,
+				  // We use babel-loader in order to use ES6.
+				  use: {
+					loader: 'babel-loader',
+					options: {
+					  presets: ['@babel/preset-env'],
+					  plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
 					},
+				  },
 				},
-      ],
-    },
-  };
-};
+				
+			  ],
+			},
+		  };
+		};
